@@ -3,7 +3,7 @@ using WebApi.Entities;
 
 namespace WebApi.DbOperations
 {
-    public class MovieStoreDbContext : DbContext, IBookStoreDbContext
+    public class MovieStoreDbContext : DbContext, IMovieStoreDbContext
     {
         public MovieStoreDbContext(DbContextOptions<MovieStoreDbContext> options) : base(options) { }
 

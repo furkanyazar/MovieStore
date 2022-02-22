@@ -3,7 +3,7 @@ using WebApi.Entities;
 
 namespace WebApi.DbOperations
 {
-    public interface IBookStoreDbContext
+    public interface IMovieStoreDbContext
     {
         DbSet<Actor> Actors { get; set; }
         DbSet<Customer> Customers { get; set; }
