@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using WebApi.DbOperations;
 using WebApi.Entities;
+using WebApi.Models.Genre;
 
 namespace WebApi.Application.GenreOperations.Commands.CreateGenre
 {
@@ -30,10 +31,5 @@ namespace WebApi.Application.GenreOperations.Commands.CreateGenre
             _context.Genres.Add(genre);
             _context.SaveChanges();   
         }
-    }
-
-    public class CreateGenreModel
-    {
-        public string Name { get; set; }
     }
 }

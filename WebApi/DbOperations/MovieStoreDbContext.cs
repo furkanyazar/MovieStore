@@ -13,5 +13,6 @@ namespace WebApi.DbOperations
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

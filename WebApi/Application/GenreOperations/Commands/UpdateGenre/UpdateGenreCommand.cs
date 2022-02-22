@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using WebApi.DbOperations;
+using WebApi.Models.Genre;
 
 namespace WebApi.Application.GenreOperations.Commands.UpdateGenre
 {
@@ -30,11 +31,5 @@ namespace WebApi.Application.GenreOperations.Commands.UpdateGenre
 
             _context.SaveChanges();
         }
-    }
-
-    public class UpdateGenreModel
-    {
-        public string Name { get; set; }
-        public bool IsActive { get; set; } = true;
     }
 }
