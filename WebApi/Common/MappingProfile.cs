@@ -1,7 +1,7 @@
 using AutoMapper;
 using WebApi.Entities;
-using WebApi.Models.Genre;
-using WebApi.Models.User;
+using WebApi.Models.Genres;
+using WebApi.Models.Users;
 
 namespace WebApi.Common
 {

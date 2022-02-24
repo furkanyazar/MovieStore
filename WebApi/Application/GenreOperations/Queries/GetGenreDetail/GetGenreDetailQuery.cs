@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using AutoMapper;
 using WebApi.DbOperations;
-using WebApi.Models.Genre;
+using WebApi.Models.Genres;
 
 namespace WebApi.Application.GenreOperations.Queries.GetGenreDetail
 {

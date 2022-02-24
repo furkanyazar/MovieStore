@@ -6,7 +6,7 @@ using WebApi.Application.UserOperations.Commands.CreateToken;
 using WebApi.DbOperations;
 using WebApi.TokenOperations.Models;
 using WebApi.Application.UserOperations.Commands.RefreshToken;
-using WebApi.Models.User;
+using WebApi.Models.Users;
 
 namespace WebApi.Controllers
 {

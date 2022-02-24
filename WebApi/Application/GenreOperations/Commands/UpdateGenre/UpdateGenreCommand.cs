@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using WebApi.DbOperations;
-using WebApi.Models.Genre;
+using WebApi.Models.Genres;
 
 namespace WebApi.Application.GenreOperations.Commands.UpdateGenre
 {

@@ -1,4 +1,4 @@
-namespace WebApi.Models.Genre
+namespace WebApi.Models.Genres
 {
     public class GenreDetailViewModel
     {

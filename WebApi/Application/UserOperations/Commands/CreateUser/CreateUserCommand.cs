@@ -3,7 +3,7 @@ using System.Linq;
 using AutoMapper;
 using WebApi.DbOperations;
 using WebApi.Entities;
-using WebApi.Models.User;
+using WebApi.Models.Users;
 
 namespace WebApi.Application.UserOperations.Commands.CreateUser
 {

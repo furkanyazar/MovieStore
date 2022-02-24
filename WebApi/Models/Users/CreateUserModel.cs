@@ -1,4 +1,4 @@
-namespace WebApi.Models.User
+namespace WebApi.Models.Users
 {
     public class CreateUserModel
     {
