@@ -19,44 +19,37 @@ namespace WebApi.DbOperations
                     new Actor
                     {
                         FirstName = "Johnny",
-                        LastName = "Depp",
-                        MovieIds = new List<int> { 1, 2 }
+                        LastName = "Depp"
                     },
                     new Actor
                     {
                         FirstName = "Dwayne",
-                        LastName = "Johnson",
-                        MovieIds = new List<int> { 3, 4 }
+                        LastName = "Johnson"
                     },
                     new Actor
                     {
                         FirstName = "Gal",
-                        LastName = "Gadot",
-                        MovieIds = new List<int> { 3 }
+                        LastName = "Gadot"
                     },
                     new Actor
                     {
                         FirstName = "Ryan",
-                        LastName = "Reynolds",
-                        MovieIds = new List<int> { 3 }
+                        LastName = "Reynolds"
                     },
                     new Actor
                     {
                         FirstName = "Emily",
-                        LastName = "Blunt",
-                        MovieIds = new List<int> { 4 }
+                        LastName = "Blunt"
                     },
                     new Actor
                     {
                         FirstName = "Anne",
-                        LastName = "Hathaway",
-                        MovieIds = new List<int> { 2 }
+                        LastName = "Hathaway"
                     },
                     new Actor
                     {
                         FirstName = "Deep",
-                        LastName = "Roy",
-                        MovieIds = new List<int> { 1 }
+                        LastName = "Roy"
                     }
                 );
 
@@ -103,8 +96,7 @@ namespace WebApi.DbOperations
                         YearOfConstruction = new DateTime(2005, 8, 12),
                         GenreId = 2,
                         DirectorId = 1,
-                        ActorIds = new List<int> { 1, 7 },
-                        Price = 100,
+                        Price = 100
                     },
                     new Movie
                     {
@@ -112,8 +104,7 @@ namespace WebApi.DbOperations
                         YearOfConstruction = new DateTime(2010, 2, 25),
                         GenreId = 2,
                         DirectorId = 1,
-                        ActorIds = new List<int> { 1, 6 },
-                        Price = 150,
+                        Price = 150
                     },
                     new Movie
                     {
@@ -121,8 +112,7 @@ namespace WebApi.DbOperations
                         YearOfConstruction = new DateTime(2021, 11, 4),
                         GenreId = 1,
                         DirectorId = 3,
-                        ActorIds = new List<int> { 2, 3, 4 },
-                        Price = 200,
+                        Price = 200
                     },
                     new Movie
                     {
@@ -130,8 +120,55 @@ namespace WebApi.DbOperations
                         YearOfConstruction = new DateTime(2021, 7, 30),
                         GenreId = 3,
                         DirectorId = 2,
-                        ActorIds = new List<int> { 2, 5 },
-                        Price = 200,
+                        Price = 250
+                    }
+                );
+
+                context.ActorsMovies.AddRange(
+                    new ActorMovie
+                    {
+                        MovieId = 1,
+                        ActorId = 1
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 1,
+                        ActorId = 7
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 2,
+                        ActorId = 1
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 2,
+                        ActorId = 6
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 3,
+                        ActorId = 2
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 3,
+                        ActorId = 3
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 3,
+                        ActorId = 4
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 4,
+                        ActorId = 2
+                    },
+                    new ActorMovie
+                    {
+                        MovieId = 4,
+                        ActorId = 5
                     }
                 );
 

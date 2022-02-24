@@ -1,5 +1,7 @@
+using System.Linq;
 using AutoMapper;
 using WebApi.Entities;
+using WebApi.Models.Actors;
 using WebApi.Models.Genres;
 using WebApi.Models.Users;
 
@@ -17,6 +19,8 @@ namespace WebApi.Common
 
             // User
             CreateMap<CreateUserModel, User>();
+
+            // Actor
         }
     }
 }

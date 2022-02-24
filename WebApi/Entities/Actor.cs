@@ -9,9 +9,6 @@ namespace WebApi.Entities
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [NotMapped]
-        public List<int> MovieIds { get; set; }
-        [NotMapped]
-        public List<Movie> Movies { get; set; }
+        public List<ActorMovie> MoviesOfActor { get; set; } = new List<ActorMovie>();
     }
 }

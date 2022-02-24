@@ -14,10 +14,7 @@ namespace WebApi.Entities
         public Genre Genre { get; set; }
         public int DirectorId { get; set; }
         public Director Director { get; set; }
-        [NotMapped]
-        public List<int> ActorIds { get; set; }
-        [NotMapped]
-        public List<Actor> Actors { get; set; }
+        public List<ActorMovie> ActorsOfMovie { get; set; } = new List<ActorMovie>();
         public decimal Price { get; set; }
     }
 }
