@@ -26,7 +26,7 @@ namespace WebApi.Application.ActorOperations.Queries.GetActors
                 .OrderBy(x => x.Id)
                 .ToList();
 
-            return _mapper.Map<ICollection<ActorsViewModel>>(actors);
+            return _mapper.Map<List<ActorsViewModel>>(actors);
         }
     }
 }

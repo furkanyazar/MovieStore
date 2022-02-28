@@ -1,7 +1,13 @@
 using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Application.ActorOperations.Commands.CreateActor;
+using WebApi.Application.ActorOperations.Commands.DeleteActor;
+using WebApi.Application.ActorOperations.Commands.UpdateActor;
+using WebApi.Application.ActorOperations.Queries.GetActorDetail;
 using WebApi.Application.ActorOperations.Queries.GetActors;
 using WebApi.DbOperations;
+using WebApi.Models.Actors;
 
 namespace WebApi.Controllers
 {
@@ -24,8 +30,65 @@ namespace WebApi.Controllers
             GetActorsQuery query = new GetActorsQuery(_context, _mapper);
 
             var result = query.Handle();
-            
+
             return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            GetActorDetailQuery query = new GetActorDetailQuery(_context, _mapper);
+            query.ActorId = id;
+
+            GetActorDetailQueryValidator validator = new GetActorDetailQueryValidator();
+            validator.ValidateAndThrow(query);
+
+            var model = query.Handle();
+
+            return Ok(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddActor([FromBody] CreateActorModel newActor)
+        {
+            CreateActorCommand command = new CreateActorCommand(_context, _mapper);
+            command.Model = newActor;
+
+            CreateActorCommandValidator validator = new CreateActorCommandValidator();
+            validator.ValidateAndThrow(command);
+
+            command.Handle();
+
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateActor(int id, [FromBody] UpdateActorModel updatedActor)
+        {
+            UpdateActorCommand command = new UpdateActorCommand(_context);
+            command.ActorId = id;
+            command.Model = updatedActor;
+
+            UpdateActorCommandValidator validator = new UpdateActorCommandValidator();
+            validator.ValidateAndThrow(command);
+
+            command.Handle();
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteActor(int id)
+        {
+            DeleteActorCommand command = new DeleteActorCommand(_context);
+            command.ActorId = id;
+
+            DeleteActorCommandValidator validator = new DeleteActorCommandValidator();
+            validator.ValidateAndThrow(command);
+
+            command.Handle();
+
+            return Ok();
         }
     }
 }
