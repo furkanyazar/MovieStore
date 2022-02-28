@@ -10,5 +10,12 @@ namespace WebApi.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public List<DirectorMovie> MoviesOfDirector { get; set; } = new List<DirectorMovie>();
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ using WebApi.Entities;
 using WebApi.Models.Actors;
 using WebApi.Models.Directors;
 using WebApi.Models.Genres;
+using WebApi.Models.Movies;
 using WebApi.Models.Users;
 
 namespace WebApi.Common
@@ -66,6 +67,34 @@ namespace WebApi.Common
                 {
                     dest.MoviesOfDirector.Clear();
                     foreach (var item in src.MoviesOfDirector) dest.MoviesOfDirector.Add(item.Movie.Name);
+                });
+
+            // Movie
+            CreateMap<CreateMovieModel, Movie>();
+            CreateMap<UpdateMovieModel, Movie>();
+            CreateMap<Actor, ActorMovie>()
+                .ForMember(dest => dest.ActorId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Actor, opt => opt.MapFrom(src => src));
+            CreateMap<Movie, MoviesViewModel>()
+                .ForMember(dest => dest.Director, opt => opt.MapFrom(src => src.Director.FullName))
+                .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name))
+                .ForMember(dest => dest.ActorsOfMovie, opt => opt.MapFrom(src => src.ActorsOfMovie))
+                .AfterMap((src, dest) =>
+                {
+                    dest.ActorsOfMovie.Clear();
+                    foreach (var item in src.ActorsOfMovie) dest.ActorsOfMovie.Add(item.Actor.FullName);
+                });
+            CreateMap<Actor, ActorMovie>()
+                .ForMember(dest => dest.ActorId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Actor, opt => opt.MapFrom(src => src));
+            CreateMap<Movie, MovieDetailViewModel>()
+                .ForMember(dest => dest.Director, opt => opt.MapFrom(src => src.Director.FullName))
+                .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name))
+                .ForMember(dest => dest.ActorsOfMovie, opt => opt.MapFrom(src => src.ActorsOfMovie))
+                .AfterMap((src, dest) =>
+                {
+                    dest.ActorsOfMovie.Clear();
+                    foreach (var item in src.ActorsOfMovie) dest.ActorsOfMovie.Add(item.Actor.FullName);
                 });
         }
     }
