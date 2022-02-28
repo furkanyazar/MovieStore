@@ -57,20 +57,17 @@ namespace WebApi.DbOperations
                     new Director
                     {
                         FirstName = "Tim",
-                        LastName = "Burton",
-                        MovieIds = new List<int> { 1, 2 }
+                        LastName = "Burton"
                     },
                     new Director
                     {
                         FirstName = "Jaume",
-                        LastName = "Collet-Serra",
-                        MovieIds = new List<int> { 4 }
+                        LastName = "Collet-Serra"
                     },
                     new Director
                     {
                         FirstName = "Rawson Marshall",
-                        LastName = "Thurber",
-                        MovieIds = new List<int> { 3 }
+                        LastName = "Thurber"
                     }
                 );
 
@@ -124,7 +121,7 @@ namespace WebApi.DbOperations
                     }
                 );
 
-                context.ActorsMovies.AddRange(
+                context.ActorMovies.AddRange(
                     new ActorMovie
                     {
                         MovieId = 1,
@@ -169,6 +166,29 @@ namespace WebApi.DbOperations
                     {
                         MovieId = 4,
                         ActorId = 5
+                    }
+                );
+
+                context.DirectorMovies.AddRange(
+                    new DirectorMovie
+                    {
+                        MovieId = 1,
+                        DirectorId = 1
+                    },
+                    new DirectorMovie
+                    {
+                        MovieId = 2,
+                        DirectorId = 1
+                    },
+                    new DirectorMovie
+                    {
+                        MovieId = 3,
+                        DirectorId = 3
+                    },
+                    new DirectorMovie
+                    {
+                        MovieId = 4,
+                        DirectorId = 2
                     }
                 );
 

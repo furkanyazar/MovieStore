@@ -14,6 +14,7 @@ namespace WebApi.DbOperations
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<ActorMovie> ActorsMovies { get; set; }
+        public DbSet<ActorMovie> ActorMovies { get; set; }
+        public DbSet<DirectorMovie> DirectorMovies { get; set; }
     }
 }
