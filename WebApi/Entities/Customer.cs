@@ -17,5 +17,12 @@ namespace WebApi.Entities
         public List<int> GenreIds { get; set; }
         [NotMapped]
         public List<Genre> Genres { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
     }
 }

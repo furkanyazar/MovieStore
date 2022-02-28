@@ -4,6 +4,7 @@ using WebApi.Models.Actors;
 using WebApi.Models.Directors;
 using WebApi.Models.Genres;
 using WebApi.Models.Movies;
+using WebApi.Models.Orders;
 using WebApi.Models.Users;
 
 namespace WebApi.Common
@@ -96,6 +97,16 @@ namespace WebApi.Common
                     dest.ActorsOfMovie.Clear();
                     foreach (var item in src.ActorsOfMovie) dest.ActorsOfMovie.Add(item.Actor.FullName);
                 });
+
+            // Order
+            CreateMap<CreateOrderModel, Order>();
+            CreateMap<UpdateOrderModel, Order>();
+            CreateMap<Order, OrdersViewModel>()
+                .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer.FullName))
+                .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src.Movie.Name));
+            CreateMap<Order, OrderDetailViewModel>()
+                .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer.FullName))
+                .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src.Movie.Name));
         }
     }
 }

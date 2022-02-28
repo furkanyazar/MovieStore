@@ -12,6 +12,6 @@ namespace WebApi.Entities
         public int MovieId { get; set; }
         public Movie Movie { get; set; }
         public decimal Price { get; set; }
-        public DateTime DateOfOrder { get; set; }
+        public DateTime DateOfOrder { get; set; } = DateTime.Now;
     }
 }
