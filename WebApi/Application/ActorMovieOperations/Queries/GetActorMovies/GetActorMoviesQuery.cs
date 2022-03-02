@@ -20,13 +20,13 @@ namespace WebApi.Application.ActorMovieOperations.Queries.GetActorMovies
 
         public ICollection<ActorMoviesViewModel> Handle()
         {
-            var actors = _context.ActorMovies
+            var actorMovies = _context.ActorMovies
                 .Include(x => x.Actor)
                 .Include(x => x.Movie)
                 .OrderBy(x => x.Id)
                 .ToList();
 
-            return _mapper.Map<List<ActorMoviesViewModel>>(actors);
+            return _mapper.Map<List<ActorMoviesViewModel>>(actorMovies);
         }
     }
 }

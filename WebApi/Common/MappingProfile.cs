@@ -2,6 +2,7 @@ using AutoMapper;
 using WebApi.Entities;
 using WebApi.Models.ActorMovies;
 using WebApi.Models.Actors;
+using WebApi.Models.CustomerGenres;
 using WebApi.Models.Customers;
 using WebApi.Models.Directors;
 using WebApi.Models.Genres;
@@ -151,12 +152,18 @@ namespace WebApi.Common
                     dest.GenresOfCustomer.Clear();
                     foreach (var item in src.GenresOfCustomer) if (item.Genre.IsActive) dest.GenresOfCustomer.Add(item.Genre.Name);
                 });
-            
+
             // ActorMovie
             CreateMap<CreateActorMovieModel, ActorMovie>();
             CreateMap<ActorMovie, ActorMoviesViewModel>()
                 .ForMember(dest => dest.Actor, opt => opt.MapFrom(src => src.Actor.FullName))
                 .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src.Movie.Name));
+
+            // CustomerGenre
+            CreateMap<CreateCustomerGenreModel, CustomerGenre>();
+            CreateMap<CustomerGenre, CustomerGenresViewModel>()
+                .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer.FullName))
+                .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name));
         }
     }
 }

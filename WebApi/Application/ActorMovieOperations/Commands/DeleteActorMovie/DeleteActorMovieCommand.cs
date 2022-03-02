@@ -17,11 +17,11 @@ namespace WebApi.Application.ActorMovieOperations.Commands.DeleteActorMovie
 
         public void Handle()
         {
-            var actor = _context.ActorMovies.SingleOrDefault(x => x.Id == ActorMovieId);
+            var actorMovie = _context.ActorMovies.SingleOrDefault(x => x.Id == ActorMovieId);
 
-            if (actor is null) throw new InvalidOperationException("Bulunamadı");
+            if (actorMovie is null) throw new InvalidOperationException("Bulunamadı");
 
-            _context.ActorMovies.Remove(actor);
+            _context.ActorMovies.Remove(actorMovie);
             _context.SaveChanges();
         }
     }

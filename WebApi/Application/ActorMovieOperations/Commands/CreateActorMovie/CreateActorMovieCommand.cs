@@ -22,13 +22,13 @@ namespace WebApi.Application.ActorMovieOperations.Commands.CreateActorMovie
 
         public void Handle()
         {
-            var actor = _context.ActorMovies.SingleOrDefault(x => x.ActorId == Model.ActorId && x.MovieId == Model.MovieId);
+            var actorMovie = _context.ActorMovies.SingleOrDefault(x => x.ActorId == Model.ActorId && x.MovieId == Model.MovieId);
 
-            if (actor is not null) throw new InvalidOperationException("Zaten mevcut");
+            if (actorMovie is not null) throw new InvalidOperationException("Zaten mevcut");
 
-            actor = _mapper.Map<ActorMovie>(Model);
+            actorMovie = _mapper.Map<ActorMovie>(Model);
 
-            _context.ActorMovies.Add(actor);
+            _context.ActorMovies.Add(actorMovie);
             _context.SaveChanges();
         }
     }
