@@ -11,14 +11,14 @@ using WebApi.Models.Users;
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]s")]
-    public class UserController : ControllerBase
+    [Route("[controller]")]
+    public class UsersController : ControllerBase
     {
         private readonly IMovieStoreDbContext _context;
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
 
-        public UserController(IMovieStoreDbContext context, IMapper mapper, IConfiguration configuration)
+        public UsersController(IMovieStoreDbContext context, IMapper mapper, IConfiguration configuration)
         {
             _context = context;
             _mapper = mapper;

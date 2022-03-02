@@ -12,13 +12,13 @@ using WebApi.Models.Actors;
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]s")]
-    public class ActorController : ControllerBase
+    [Route("[controller]")]
+    public class ActorsController : ControllerBase
     {
         private readonly IMovieStoreDbContext _context;
         private readonly IMapper _mapper;
 
-        public ActorController(IMovieStoreDbContext context, IMapper mapper)
+        public ActorsController(IMovieStoreDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -1,6 +1,7 @@
 using AutoMapper;
 using WebApi.Entities;
 using WebApi.Models.Actors;
+using WebApi.Models.Customers;
 using WebApi.Models.Directors;
 using WebApi.Models.Genres;
 using WebApi.Models.Movies;
@@ -107,6 +108,48 @@ namespace WebApi.Common
             CreateMap<Order, OrderDetailViewModel>()
                 .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer.FullName))
                 .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src.Movie.Name));
+
+            // Customer
+            CreateMap<CreateCustomerModel, Customer>();
+            CreateMap<UpdateCustomerModel, Customer>();
+            CreateMap<Genre, CustomerGenre>()
+                .ForMember(dest => dest.GenreId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src));
+            CreateMap<Movie, CustomerMovie>()
+                .ForMember(dest => dest.MovieId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src));
+            CreateMap<Customer, CustomersViewModel>()
+                .ForMember(dest => dest.MoviesOfCustomer, opt => opt.MapFrom(src => src.MoviesOfCustomer))
+                .AfterMap((src, dest) =>
+                {
+                    dest.MoviesOfCustomer.Clear();
+                    foreach (var item in src.MoviesOfCustomer) dest.MoviesOfCustomer.Add(item.Movie.Name);
+                })
+                .ForMember(dest => dest.GenresOfCustomer, opt => opt.MapFrom(src => src.GenresOfCustomer))
+                .AfterMap((src, dest) =>
+                {
+                    dest.GenresOfCustomer.Clear();
+                    foreach (var item in src.GenresOfCustomer) if (item.Genre.IsActive) dest.GenresOfCustomer.Add(item.Genre.Name);
+                });
+            CreateMap<Genre, CustomerGenre>()
+                .ForMember(dest => dest.GenreId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src));
+            CreateMap<Movie, CustomerMovie>()
+                .ForMember(dest => dest.MovieId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src));
+            CreateMap<Customer, CustomerDetailViewModel>()
+                .ForMember(dest => dest.MoviesOfCustomer, opt => opt.MapFrom(src => src.MoviesOfCustomer))
+                .AfterMap((src, dest) =>
+                {
+                    dest.MoviesOfCustomer.Clear();
+                    foreach (var item in src.MoviesOfCustomer) dest.MoviesOfCustomer.Add(item.Movie.Name);
+                })
+                .ForMember(dest => dest.GenresOfCustomer, opt => opt.MapFrom(src => src.GenresOfCustomer))
+                .AfterMap((src, dest) =>
+                {
+                    dest.GenresOfCustomer.Clear();
+                    foreach (var item in src.GenresOfCustomer) if (item.Genre.IsActive) dest.GenresOfCustomer.Add(item.Genre.Name);
+                });
         }
     }
 }

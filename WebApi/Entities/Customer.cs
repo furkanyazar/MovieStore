@@ -9,14 +9,8 @@ namespace WebApi.Entities
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [NotMapped]
-        public List<int> MovieIds { get; set; }
-        [NotMapped]
-        public List<Movie> Movies { get; set; }
-        [NotMapped]
-        public List<int> GenreIds { get; set; }
-        [NotMapped]
-        public List<Genre> Genres { get; set; }
+        public List<CustomerMovie> MoviesOfCustomer { get; set; } = new List<CustomerMovie>();
+        public List<CustomerGenre> GenresOfCustomer { get; set; } = new List<CustomerGenre>();
         public string FullName
         {
             get
