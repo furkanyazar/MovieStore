@@ -5,6 +5,7 @@ using WebApi.Models.Actors;
 using WebApi.Models.CustomerGenres;
 using WebApi.Models.CustomerMovies;
 using WebApi.Models.Customers;
+using WebApi.Models.DirectorMovies;
 using WebApi.Models.Directors;
 using WebApi.Models.Genres;
 using WebApi.Models.Movies;
@@ -165,11 +166,17 @@ namespace WebApi.Common
             CreateMap<CustomerGenre, CustomerGenresViewModel>()
                 .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer.FullName))
                 .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name));
-            
+
             // CustomerMovie
             CreateMap<CreateCustomerMovieModel, CustomerMovie>();
             CreateMap<CustomerMovie, CustomerMoviesViewModel>()
                 .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => src.Customer.FullName))
+                .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src.Movie.Name));
+
+            // DirectorMovie
+            CreateMap<CreateDirectorMovieModel, DirectorMovie>();
+            CreateMap<DirectorMovie, DirectorMoviesViewModel>()
+                .ForMember(dest => dest.Director, opt => opt.MapFrom(src => src.Director.FullName))
                 .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src.Movie.Name));
         }
     }
